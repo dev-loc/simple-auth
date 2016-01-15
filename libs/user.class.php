@@ -57,16 +57,15 @@ class User
     {
         $bResult = FALSE;
 
-        if ( $this->IsLoginAvailable() )
+        if ( $this->IsLoginAvailable() &&
+             !( $bResult = $this->_DoLogIn( $sLogin, $sPassw ) )
+        )
         {
-            if ( !( $bResult = $this->_DoLogIn( $sLogin, $sPassw ) ) )
-            {
-                 $this->oDb->Query(
-                    "INSERT INTO failed_logins SET
-                        ip_addr    = '". $_SERVER['REMOTE_ADDR'] ."',
-                        login_time = " . time()
-                 );
-            }
+            $this->oDb->Query(
+               "INSERT INTO failed_logins SET
+                   ip_addr    = '". $_SERVER['REMOTE_ADDR'] ."',
+                   login_time = " . time()
+            );
         }
 
         return $bResult;
