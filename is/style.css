@@ -1,0 +1,27 @@
+#redir_msg {
+    margin: auto;
+    border: 0;
+    width: 200px; 
+    padding: 20px;
+}
+
+div.content {
+    border: 0px;
+    width: 800px; 
+    min-height: 400px;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.fld_caption {
+    display: inline-block;
+    width: 100px;
+}
+
+.fld_passw {
+    display: inline-block;
+    width: 200px;
+}
